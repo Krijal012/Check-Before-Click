@@ -3,37 +3,37 @@ import axios from "axios";
 import Sidebar from "../Components/Sidebar";
 
 function Dashboard() {
-  // Function to generate random numbers
-  const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+  // Hardcoded Wikipedia demo links
+  const wikiLinks = [
+    { url: "https://en.wikipedia.org/wiki/JavaScript", type: "safe", risk_percentage: 5 },
+    { url: "https://en.wikipedia.org/wiki/React_(web_framework)", type: "safe", risk_percentage: 10 },
+    { url: "https://en.wikipedia.org/wiki/Node.js", type: "safe", risk_percentage: 15 },
 
-  // Dummy links generator
-  const generateLinks = (count, type) => {
-    const prefixes = ["https://example", "https://site", "http://mysite", "https://link"];
-    const suffixes = [".com", ".org", ".net", ".io"];
-    return Array.from({ length: count }, (_, i) => ({
-      url: `${prefixes[getRandomNumber(0, prefixes.length - 1)]}${getRandomNumber(1, 100)}${suffixes[getRandomNumber(0, suffixes.length - 1)]}`,
-      type
-    }));
-  };
+    { url: "https://en.wikipedia.org/wiki/Phishing", type: "risky", risk_percentage: 60 },
+    { url: "https://en.wikipedia.org/wiki/Malware", type: "risky", risk_percentage: 55 },
+    { url: "https://en.wikipedia.org/wiki/Social_engineering_(security)", type: "risky", risk_percentage: 50 },
 
-  // Initialize stats with random numbers and links
+    { url: "https://en.wikipedia.org/wiki/Virus", type: "blocked", risk_percentage: 95 },
+    { url: "https://en.wikipedia.org/wiki/Hacking", type: "blocked", risk_percentage: 90 },
+    { url: "https://en.wikipedia.org/wiki/Ransomware", type: "blocked", risk_percentage: 100 },
+  ];
+
+  // Initialize stats based on demo links
   const [stats, setStats] = useState(() => {
-    const safeCount = getRandomNumber(10, 20);
-    const riskyCount = getRandomNumber(5, 15);
-    const blockedCount = getRandomNumber(3, 10);
+    const safeLinks = wikiLinks.filter(l => l.type === "safe");
+    const riskyLinks = wikiLinks.filter(l => l.type === "risky");
+    const blockedLinks = wikiLinks.filter(l => l.type === "blocked");
+
     return {
-      total: safeCount + riskyCount + blockedCount,
-      safeLinks: safeCount,
-      riskyLinks: riskyCount,
-      blockedLinks: blockedCount,
-      links: [
-        ...generateLinks(safeCount, "safe"),
-        ...generateLinks(riskyCount, "risky"),
-        ...generateLinks(blockedCount, "blocked"),
-      ]
+      total: wikiLinks.length,
+      safeLinks: safeLinks.length,
+      riskyLinks: riskyLinks.length,
+      blockedLinks: blockedLinks.length,
+      links: wikiLinks,
     };
   });
 
+  // Optional: fetch real stats from backend if available
   useEffect(() => {
     axios.get("http://localhost:5000/api/dashboard/stats")
       .then(res => setStats(res.data))
@@ -42,7 +42,7 @@ function Dashboard() {
 
   return (
     <div className="d-flex">
-      
+     
       <div className="flex-grow-1 container mt-4">
         <h2>Dashboard</h2>
         <p className="text-muted">Overview of link scans and risks.</p>
@@ -93,6 +93,7 @@ function Dashboard() {
               {stats.links.filter(l => l.type === "safe").map((link, idx) => (
                 <li key={idx} className="list-group-item">
                   <a href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</a>
+                  <span className="float-end">{link.risk_percentage}%</span>
                 </li>
               ))}
             </ul>
@@ -104,6 +105,7 @@ function Dashboard() {
               {stats.links.filter(l => l.type === "risky").map((link, idx) => (
                 <li key={idx} className="list-group-item">
                   <a href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</a>
+                  <span className="float-end">{link.risk_percentage}%</span>
                 </li>
               ))}
             </ul>
@@ -115,6 +117,7 @@ function Dashboard() {
               {stats.links.filter(l => l.type === "blocked").map((link, idx) => (
                 <li key={idx} className="list-group-item">
                   <a href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</a>
+                  <span className="float-end">{link.risk_percentage}%</span>
                 </li>
               ))}
             </ul>
