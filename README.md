@@ -35,8 +35,6 @@ Scanning content in real-time and routing through a proxy without leaking user d
 
 - Enable element-level hover analysis, showing risk score next to buttons/links.
 
-- Use proxy routing to mask scanning requests and prevent exposure.
-
 - Maintain a dashboard with:
 
 1. Start/Stop extension
@@ -79,5 +77,6 @@ Scanning content in real-time and routing through a proxy without leaking user d
 - Ensures privacy & anonymity
 
 - Organized data storage
+
 
 
