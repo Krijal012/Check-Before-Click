@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Dashboard from "./Pages/dashboard";
-import History from "./Pages/history";
+import Dashboard from "./Pages/dashboard.jsx";
+import History from "./Pages/history.jsx";
 
 function App() {
   return (

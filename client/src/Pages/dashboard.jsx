@@ -1,6 +1,5 @@
-// src/pages/Dashboard.jsx
-import Sidebar from "../Components/sidebar";
-import DashboardContent from "../Components/DashboardContent";
+import Sidebar from "../Components/Sidebar.jsx";
+import DashboardContent from "../Components/dashboardContent.jsx";
 
 function Dashboard() {
   return (

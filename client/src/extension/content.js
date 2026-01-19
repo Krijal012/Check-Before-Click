@@ -1,42 +1,56 @@
 console.log("Check-Before-Click content script loaded");
- 
+
 let scanning = false;
- 
-// Listen for messages from popup
+let sentLinks = new Set();
+let sessionId = null;
+
+// Listen to start/stop messages from popup
 chrome.runtime.onMessage.addListener((msg) => {
-  if (msg.action === "START_SCAN") scanning = true;
-  if (msg.action === "STOP_SCAN") scanning = false;
+  console.log("Message received:", msg);
+  if (msg.action === "START_SCAN") {
+    scanning = true;
+  }
+  if (msg.action === "STOP_SCAN") {
+    scanning = false;
+  }
 });
- 
-// Scan the page every 3 seconds
-const scanInterval = setInterval(async () => {
-  if (!scanning) return;
- 
-  const links = Array.from(document.querySelectorAll("a"))
-    .filter(a => a.href)
-    .map(a => {
-      let status = "safe";
- 
-      // Simple heuristics for demonstration
-      if (a.href.includes("@") || a.href.startsWith("http://")) status = "risky";
-      if (a.href.includes("login") || a.href.includes("verify")) status = "blocked";
- 
-      return { url: a.href, status };
-    });
- 
-  if (links.length === 0) return;
- 
+
+// Function to collect links dynamically
+function getAllLinks() {
+  return Array.from(document.querySelectorAll("a"))
+    .filter(a => a.href && a.href.startsWith("http"))
+    .map(a => ({ url: a.href }));
+}
+
+// Use MutationObserver to detect dynamically added links
+const observer = new MutationObserver(() => {
+  if (scanning) scanLinks();
+});
+observer.observe(document.body, { childList: true, subtree: true });
+
+async function scanLinks() {
+  const allLinks = getAllLinks();
+  const newLinks = allLinks.filter(l => !sentLinks.has(l.url));
+  if (newLinks.length === 0) return;
+
+  newLinks.forEach(l => sentLinks.add(l.url));
+
   try {
     const response = await fetch("http://localhost:5000/api/scan", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url: window.location.href, links })
+      body: JSON.stringify({ url: window.location.href, links: newLinks, sessionId })
     });
+
     const data = await response.json();
+    sessionId = data.sessionId; // keep session
     console.log("Scan sent:", data);
   } catch (err) {
     console.error("Scan failed:", err);
   }
+}
+
+// Periodically scan every 3 seconds in case links are static
+setInterval(() => {
+  if (scanning) scanLinks();
 }, 3000);
- 
- 
