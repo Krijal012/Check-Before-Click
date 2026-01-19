@@ -1,7 +1,7 @@
 ## Check before Click - Scan before you click – Stay safe online
 
 Idea:
-A browser extension and dashboard that scans web pages in real-time to detect potentially unsafe links or buttons. It informs the user about the safety level of elements before interacting with them, using a combination of screen scanning, AI analysis, and proxy-based request routing.
+A browser extension and dashboard that scans web pages in real-time to detect potentially unsafe links or buttons. It informs the user about the safety level of elements before interacting with them, using a combination of screen scanning and AI analysis.
 
 Goal:
 Prevent users from clicking on risky or malicious elements, reducing phishing, malware exposure, and unsafe online behavior.
@@ -79,4 +79,5 @@ Scanning content in real-time and routing through a proxy without leaking user d
 - Ensures privacy & anonymity
 
 - Organized data storage
+
 
