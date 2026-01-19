@@ -1,1 +1,108 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    width: 450px;
+    padding: 50;
+    background: transparent;
+    
+}
 
+.container {
+    background: white;
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 4px 12px rgb(255, 251, 251);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    
+    font-size: 200px;
+}
+
+.logo {
+    width: 50px;      
+    height: 50px;
+    border-radius: 50%;
+    object-fit:cover;
+    padding: 15px;
+    align-items: left;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    width: 95px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.1s ease;
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    background-color: #3e8e41; /* slightly darker green on click */
+}
+
+button:hover {
+    filter: brightness(1.1); /* slightly brighter */
+}
+
+.title {
+    margin: 0;       
+    font-size: 34px;
+    padding: 20px;
+}
+
+h3{
+    margin-top: 0;
+    padding: 20px;
+    font-size: 22px;
+
+}
+
+p{
+     margin: 20px;
+    padding: 0;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#riskLevel.low {
+    color: green;
+    font-weight: bold;
+}
+
+#riskLevel.medium {
+    color: orange;
+    font-weight: bold;
+}
+
+#riskLevel.high {
+    color: red;
+    font-weight: bold;
+}
+
+#proceed {
+    background-color: #4caf50;
+    color: white;
+}
+
+#cancel {
+    background-color: #f44336;
+    color: white;
+}
+
+#dash{
+   background-color: #0D6EFD;
+    color: white; 
+}
