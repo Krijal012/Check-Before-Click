@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check-Before-Click</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="head-container">
+  <img src="Icon128px.png" alt="Logo">
+  <h1>Check-Before-Click</h1>
+  <p>v1.0</p>
+</div>
+
+<div class="button-container">
+  <button class="btn btn-start" id="start-btn">Start</button>
+  <button class="btn btn-dashboard" id="dashboard-btn">Dashboard</button>
+  <button class="btn btn-stop" id="stop-btn">Stop</button>
+</div>
+
+<div class="stats-container">
+  <h3>Total Detections</h3>
+  <div class="stat-row safe-row">Safe: <span id="safe-count">0</span></div>
+  <div class="stat-row risky-row">Risky: <span id="risky-count">0</span></div>
+  <div class="stat-row blocked-row">Blocked: <span id="blocked-count">0</span></div>
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>
