@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Check-Before-Click</title>
     <link rel="stylesheet" href="style.css">
+    <script src="popup.js"></script>
 </head>
 
 <body>
@@ -22,7 +23,13 @@
     </div>
 
     <div class="stats-container">
-        <h3>Total Detections</h3>
+        <div class="stats-header">
+            <h3>Total Detections</h3>
+            <div id="detection-status" class="status-badge">
+                <span class="status-dot"></span>
+                <span class="status-text">OFF</span>
+            </div>
+        </div>
 
         <div class="stat-row safe-row">
             <span class="range">0.1 - 0.3: Safe</span>
