@@ -15,14 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     startBtn.addEventListener('click', () => {
         chrome.storage.local.set({ isScanning: true }, () => {
             setUIOn();
-            console.log("Scanner Activated");
         });
     });
 
     stopBtn.addEventListener('click', () => {
         chrome.storage.local.set({ isScanning: false }, () => {
             setUIOff();
-            console.log("Scanner Deactivated");
         });
     });
 
