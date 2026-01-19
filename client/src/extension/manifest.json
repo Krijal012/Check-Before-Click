@@ -1,0 +1,36 @@
+{
+    "manifest_version": 3,
+    "name": "Check-Before-Click",
+    "version": "1.0",
+    "description": "Warns users before clicking suspicious links",
+    "icons": {
+        
+    },
+    "action": {
+  
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage",
+        "notifications"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "host_permissions": [
+        "https://*/*",
+        "http://*/*"
+    ]
+}

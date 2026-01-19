@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-Before-Click</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="head-container">
+        <img src="Icon128px.png" alt="Logo">
+        <h1>Check-Before-Click</h1>
+        <p>v1.0</p>
+    </div>
+
+    <div class="button-container">
+        <button class="btn btn-start">Start</button>
+        <button class="btn btn-dashboard" href="#">Dashboard</button>
+        <button class="btn btn-stop">Stop</button>
+    </div>
+
+    <div class="stats-container">
+        <h3>Total Detections</h3>
+
+        <div class="stat-row safe-row">
+            <span class="range">0.1 - 0.3: Safe</span>
+            <span class="count">[<span id="safe-count">0</span>]</span>
+        </div>
+
+        <div class="stat-row risky-row">
+            <span class="range">0.31 - 0.7: Risky</span>
+            <span class="count">[<span id="risky-count">0</span>]</span>
+        </div>
+
+        <div class="stat-row blocked-row">
+            <span class="range">0.71 - 1.0: Blocked</span>
+            <span class="count">[<span id="blocked-count">0</span>]</span>
+        </div>
+    </div>
+</body>
+
+</html>

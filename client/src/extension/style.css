@@ -1,0 +1,139 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+html {
+    background: transparent;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    width: 320px;
+    margin: 0;
+    padding: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #212529;
+}
+
+.head-container {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.btn {
+    flex: 1;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 2px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #F8F9FA;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.85);
+    opacity: 0.85;
+}
+
+.btn-start {
+    background-color: #198754;
+}
+
+.btn-dashboard {
+    background-color: #0D6EFD;
+}
+
+.btn-stop {
+    background-color: #DC3545;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    color: #F8F9FA;
+    margin: 0;
+}
+
+p {
+    padding-top: 8px;
+    padding-left: 0px;
+    color: #a5a5a5;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+}
+
+.stats-container {
+    margin-top: 5px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stats-container h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    margin: 0 0 5px 0;
+    color: #F8F9FA;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.safe-row {
+    color: #198754;
+    background-color: rgba(25, 135, 84, 0.1);
+}
+
+.risky-row {
+    color: #FFC107;
+    background-color: rgba(238, 192, 53, 0.153);
+}
+
+.blocked-row {
+    color: #DC3545;
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+.count {
+    font-weight: 700;
+}
