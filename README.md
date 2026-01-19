@@ -1,7 +1,7 @@
 ## Check before Click - Scan before you click – Stay safe online
 
 Idea:
-A browser extension and dashboard that scans web pages in real-time to detect potentially unsafe links or buttons. It informs the user about the safety level of elements before interacting with them, using a combination of screen scanning, AI analysis, and proxy-based request routing.
+A browser extension and dashboard that scans web pages in real-time to detect potentially unsafe links or buttons. It informs the user about the safety level of elements before interacting with them, using a combination of screen scanning and AI analysis.
 
 Goal:
 Prevent users from clicking on risky or malicious elements, reducing phishing, malware exposure, and unsafe online behavior.
@@ -29,13 +29,11 @@ Scanning content in real-time and routing through a proxy without leaking user d
 
 1. Safe: 0–30%
 
-2. Risky: 30–60%
+2. Risky: 31–70%
 
-3. Blocked: 60–100%
+3. Blocked: 71–100%
 
 - Enable element-level hover analysis, showing risk score next to buttons/links.
-
-- Use proxy routing to mask scanning requests and prevent exposure.
 
 - Maintain a dashboard with:
 
@@ -54,7 +52,6 @@ Scanning content in real-time and routing through a proxy without leaking user d
 | **Hover Risk Detection** | Show element-level risk score on hover | JS content scripts + backend API         |
 | **Full Page Scan**       | Evaluate all page elements             | Extension scan + backend analysis        |
 | **Risk Categories**      | Safe, Risky, Blocked                   | Score-based classification               |
-| **Proxy Integration**    | Route requests to protect user data    | Proxy server between extension & backend |
 | **Dashboard**            | Visual summary & start/stop extension  | Web dashboard with charts & buttons      |
 | **Logout**               | Redirect from extension to dashboard   | Extension pop-up button event            |
 | **Percentage Display**   | Show granular risk (0,0.1,0.2...)      | Backend returns float values             |
@@ -75,10 +72,11 @@ Scanning content in real-time and routing through a proxy without leaking user d
 
 - AI/ML module for risk detection
 
-3. Database: SQLite/PostgreSQL (optional for tracking)
-
-- Proxy
-
-- Nginx / Node.js-based reverse proxy
+3. Database: PostgreSQL
 
 - Ensures privacy & anonymity
+
+- Organized data storage
+
+
+
